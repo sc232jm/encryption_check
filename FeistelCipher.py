@@ -46,5 +46,5 @@ R5 = xor(f4,L4)
 L5 = R4
 
 # Output
-ENC = bin(int(L5+R5, 2))
-print(f"Binary: {ENC[2:].zfill(8)} | Denary: {int(ENC, 2)} ({int(ENC, 2) - 2**16 if ENC[2] == "1" else ENC}) ")
+ENC = bin(int(L5+R5, 2))[2:].zfill(16)
+print(f"Binary: {ENC[2:]} | Denary: {int(ENC, 2)} ({int(ENC, 2) - 2**16 if ENC[0] == "1" else int(ENC, 2)})")
