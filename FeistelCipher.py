@@ -1,6 +1,6 @@
-import re
-
 # @Josh Mundray
+
+import re
 
 # XOR Function
 def xor(a,b):     
@@ -9,7 +9,7 @@ def xor(a,b):
 # Circular Shift
 def shift(x, n):
     x=int(x, 2)
-    return bin((x << n)|(x >> (8 - n)))[-8:].zfill(8)
+    return bin((x << n)|(x >> (8 - n))).split("0b")[1][-8:].zfill(8)
 
 DATA = input("Data: ")
 KEY = input("Key: ")
@@ -27,8 +27,6 @@ else:
 if len(DATA) > 16: raise ValueError("Length greater than 16")
 if len(KEY) > 8: raise ValueError("Length greater than 8")
 
-
-
 L1 = DATA[0:8]
 R1 = DATA[8::]
 
@@ -38,6 +36,8 @@ K1=shift(KEY, 0)
 K2=shift(KEY, 1)
 K3=shift(KEY, 2)
 K4=shift(KEY, 3)
+
+print(K1, K2, K3, K4)
 
 # First round of encryption
 f1 = xor(R1,K1)
