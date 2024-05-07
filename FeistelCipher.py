@@ -1,3 +1,5 @@
+import re
+
 # @Josh Mundray
 
 # XOR Function
@@ -8,12 +10,24 @@ def xor(a,b):
 def shift(x, n):
     x=int(x, 2)
     return bin((x << n)|(x >> (8 - n)))[-8:].zfill(8)
- 
-DATA = input("Data: ").zfill(16)
-KEY = input("Key: ").zfill(8)
+
+DATA = input("Data: ")
+KEY = input("Key: ")
+
+if re.sub("[^01]", "", DATA) == DATA:
+    DATA = DATA.zfill(16)
+else:
+    DATA = bin(int(DATA))[2:].zfill(16)
+
+if re.sub("[^01]", "", KEY) == KEY:
+    KEY = KEY.zfill(8)
+else:
+    KEY = bin(int(KEY))[2:].zfill(8)
 
 if len(DATA) > 16: raise ValueError("Length greater than 16")
 if len(KEY) > 8: raise ValueError("Length greater than 8")
+
+
 
 L1 = DATA[0:8]
 R1 = DATA[8::]
