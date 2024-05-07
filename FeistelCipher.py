@@ -12,6 +12,9 @@ def shift(x, n):
 DATA = input("Data: ").zfill(16)
 KEY = input("Key: ").zfill(8)
 
+if len(DATA) > 16: raise ValueError("Length greater than 16")
+if len(KEY) > 8: raise ValueError("Length greater than 8")
+
 L1 = DATA[0:8]
 R1 = DATA[8::]
 
